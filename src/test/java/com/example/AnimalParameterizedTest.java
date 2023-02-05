@@ -11,17 +11,16 @@ import static org.junit.Assert.assertEquals;
 @RunWith(Parameterized.class)
 public class AnimalParameterizedTest {
 
-    Animal animal = new Animal();
-
     private final String animalKind;
     private final List<String> foodListExpected;
+    Animal animal = new Animal();
 
     public AnimalParameterizedTest(String animalKind, List<String> foodList) {
         this.animalKind = animalKind;
         this.foodListExpected = foodList;
     }
 
-    @Parameterized.Parameters // добавили аннотацию
+    @Parameterized.Parameters(name = "Тип животного: {0}; Ожидаемый список: {1}")
     public static Object[][] getFoodData() {
         return new Object[][]{
                 {"Травоядное", List.of("Трава", "Различные растения")},
@@ -30,6 +29,6 @@ public class AnimalParameterizedTest {
 
     @Test
     public void getFood() throws Exception {
-        assertEquals(foodListExpected, animal.getFood(animalKind));
+        assertEquals("Возвращен неверный список пищи", foodListExpected, animal.getFood(animalKind));
     }
 }

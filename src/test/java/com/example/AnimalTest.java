@@ -3,7 +3,7 @@ package com.example;
 import junit.framework.AssertionFailedError;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class AnimalTest {
 
@@ -11,16 +11,16 @@ public class AnimalTest {
 
     @Test
     public void getFamily() {
-        assertEquals("Существует несколько семейств: заячьи, беличьи, мышиные, кошачьи, псовые, медвежьи, куньи", animal.getFamily());
+        assertEquals("Список семейств неверный", "Существует несколько семейств: заячьи, беличьи, мышиные, кошачьи, псовые, медвежьи, куньи", animal.getFamily());
     }
 
     @Test
     public void getFoodException() {
         try {
             animal.getFood("sth");
-            throw new AssertionFailedError("Unexpected line processed");
+            throw new AssertionFailedError("Не сработал Exception на неизвестный вид животного");
         } catch (Exception e) {
-            assertEquals("Неизвестный вид животного, используйте значение Травоядное или Хищник", e.getMessage());
+            assertEquals("Сообщение об ошибке неверное", "Неизвестный вид животного, используйте значение Травоядное или Хищник", e.getMessage());
         }
     }
 }

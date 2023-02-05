@@ -2,16 +2,12 @@ package com.example;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.mockito.junit.MockitoJUnitRunner;
 
-import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
@@ -35,13 +31,12 @@ public class FelineTest {
         Feline spy = spy(feline);
         when(spy.getFood("Хищник")).thenReturn(expected);
 
-        assertEquals(expected,spy.eatMeat());
+        assertEquals("Не был вызван метод getFood()", expected, spy.eatMeat());
     }
 
     @Test
     public void getFamily() {
-        String expected = "Кошачьи";
-        assertEquals(expected,feline.getFamily());
+        assertEquals("Возвращен неверный вид животного", "Кошачьи", feline.getFamily());
     }
 
     @Test
@@ -51,6 +46,6 @@ public class FelineTest {
         Feline spy = spy(feline);
         when(spy.getKittens(1)).thenReturn(expected);
 
-        assertEquals(expected,spy.getKittens());
+        assertEquals("Не был вызван метод getKittens(1)", expected, spy.getKittens());
     }
 }

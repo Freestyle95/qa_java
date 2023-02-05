@@ -1,14 +1,11 @@
 package com.example;
 
-import org.junit.Assert;
 import org.junit.Before;
-import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.mockito.junit.MockitoJUnitRunner;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class CatTest {
 
@@ -24,9 +21,7 @@ public class CatTest {
 
     @org.junit.Test
     public void getSound() {
-        String actual = cat.getSound();
-        String expected = "Мяу";
-        assertEquals(expected, actual);
+        assertEquals("Возвращен неверный тип издаваемого звука", "Мяу", cat.getSound());
     }
 
     @org.junit.Test

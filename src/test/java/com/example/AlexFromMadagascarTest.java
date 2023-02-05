@@ -5,13 +5,14 @@ import org.mockito.Mock;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class AlexFromMadagascarTest {
 
     @Mock
     Feline feline;
     AlexFromMadagascar alex;
+
     {
         try {
             alex = new AlexFromMadagascar(feline);
@@ -22,16 +23,16 @@ public class AlexFromMadagascarTest {
 
     @Test
     public void getFriends() {
-        assertEquals(List.of("Марти", "Глория", "Мелман"),alex.getFriends());
+        assertEquals("Возвращен неверный список друзей Алекса", List.of("Марти", "Глория", "Мелман"), alex.getFriends());
     }
 
     @Test
     public void getPlaceOfLiving() {
-        assertEquals("Нью-Йоркский зоопарк",alex.getPlaceOfLiving());
+        assertEquals("Возвращен неверный город проживания Алекса", "Нью-Йоркский зоопарк", alex.getPlaceOfLiving());
     }
 
     @Test
     public void getKittens() {
-        assertEquals(0,alex.getKittens());
+        assertEquals("Возвращено неверное количество котят Алекса", 0, alex.getKittens());
     }
 }

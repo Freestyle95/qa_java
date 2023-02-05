@@ -5,19 +5,18 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.spy;
 
 @RunWith(Parameterized.class)
 public class FelineParameterizedTest {
 
-    Feline feline = new Feline();
     private final int kittens;
+    Feline feline = new Feline();
 
     public FelineParameterizedTest(int kittens) {
         this.kittens = kittens;
     }
 
-    @Parameterized.Parameters // добавили аннотацию
+    @Parameterized.Parameters(name = "Количество котят: {0}")
     public static Object[] getKittensData() {
         return new Object[]{
                 3,
@@ -27,6 +26,6 @@ public class FelineParameterizedTest {
 
     @Test
     public void testGetKittens() {
-        assertEquals(kittens, feline.getKittens(kittens));
+        assertEquals("Возвращено неверное количество котят", kittens, feline.getKittens(kittens));
     }
 }
